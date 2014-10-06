@@ -1,31 +1,36 @@
 <?php
 
-echo 'Hello! Lets play a guessing game. Guess a number between 1 and 100! ';
+echo 'Hello! Lets play a guessing game. ';
 
-$answer = mt_rand(1, 100);
-
-fwrite(STDOUT, 'What\'s your best guess? ');
-
-$guess = trim(fgets(STDIN));
-
-$count = 1;
-
-// While user guess is equal to generated number
-	// keep allowing guesses
-
-
-while($guess != $answer) {
-	if($guess < $answer) {
-		fwrite(STDOUT, 'Why don\'t you guess a higher number....');
-		$guess = trim(fgets(STDIN));
-	} elseif($guess > $answer) {
-		fwrite(STDOUT, 'Why don\'t you guess a litle lower....');
-		$guess = trim(fgets(STDIN));
+if($argc == 3){
+	echo "Guess a number between {$argv[1]} and {$argv[2]}. \n";
 	}
-	$count++;
-} 
+$answer = mt_rand($argv[1], $argv[2]);
+var_dump($answer);
 
-echo 'Winner Winner Chicken Dinner!' . "\n" . "It took you $count guesses \n";
+fwrite(STDOUT, 'What is your guess? ');
+
+$count = 0;
+
+do {
+	// Prompt User For Guess
+	$guess = trim(fgets(STDIN));
+	$count++;
+
+		// Check Guess
+		if ($guess < $answer) {
+			fwrite(STDOUT, 'Why don\'t you guess a higher number....');
+		}
+
+		elseif ($guess > $answer) {
+			fwrite(STDOUT, 'Why don\'t you guess a litle lower....');
+		}
+
+		else {
+			echo 'Winner Winner Chicken Dinner!' . "\n" . "It took you $count guesses \n";
+		}
+	
+	} while($guess != $answer);
 
 if($count <= 5) {
 	echo "That is mighty impressive guessing fine chap! \n";
