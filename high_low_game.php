@@ -28,7 +28,7 @@ while($guess != $answer) {
 echo 'Winner Winner Chicken Dinner!' . "\n" . "It took you $count guesses \n";
 
 if($count <= 5) {
-	echo "Mighty impressive fine chap! \n";
+	echo "That is mighty impressive guessing fine chap! \n";
 } elseif($count > 5 && $count <= 8) {
 	echo "That is decent guessing good fellow, but not the best. \n"; 
 } elseif($count > 8 && $count <= 20) {
