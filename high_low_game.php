@@ -1,12 +1,11 @@
 <?php
 
-echo 'Hello! Lets play a guessing game. ';
+echo 'Hello! Lets play a wonderful guessing game, where I know the number and you dont. ';
 
 if($argc == 3){
 	echo "Guess a number between {$argv[1]} and {$argv[2]}. \n";
 	}
-$answer = mt_rand($argv[1], $argv[2]);
-var_dump($answer);
+		$answer = mt_rand($argv[1], $argv[2]);
 
 fwrite(STDOUT, 'What is your guess? ');
 
@@ -16,20 +15,16 @@ do {
 	// Prompt User For Guess
 	$guess = trim(fgets(STDIN));
 	$count++;
-
 		// Check Guess
 		if ($guess < $answer) {
-			fwrite(STDOUT, 'Why don\'t you guess a higher number....');
+			fwrite(STDOUT, 'WRONG! Why don\'t you guess a higher number....');
 		}
-
 		elseif ($guess > $answer) {
-			fwrite(STDOUT, 'Why don\'t you guess a litle lower....');
+			fwrite(STDOUT, 'WRONG! Why don\'t you guess a litle lower....');
 		}
-
 		else {
 			echo 'Winner Winner Chicken Dinner!' . "\n" . "It took you $count guesses \n";
 		}
-	
 	} while($guess != $answer);
 
 if($count <= 5) {
